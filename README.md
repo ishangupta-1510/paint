@@ -12,9 +12,3 @@
 * ***NodeJs***
 * ***ExpressJs***
 * ***MongoDB***
-
-> ***Snapshot of app:*** 
-
-<img src="images/Screenshot from 2022-08-11 14-16-37.png"/>
-<img src="images/Screenshot from 2022-08-11 14-16-43.png"/>
-<img src="images/Screenshot from 2022-08-11 14-17-47.png"/>
