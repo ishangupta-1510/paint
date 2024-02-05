@@ -25,7 +25,7 @@ const Register = () => {
     const { name, email, password, reEnterPassword } = user;
     if (name && email && password && password === reEnterPassword) {
       axios
-        .post("https://paint-brown.vercel.app/register", user)
+        .post("https://paint-tz9m.onrender.com/register", user)
         .then((res) => {
           alert(res.data.message);
           history("/login");

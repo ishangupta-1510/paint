@@ -4,15 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-
-const corsOptions = {
-  origin: "http://localhost:3000",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
@@ -45,7 +37,6 @@ const User = mongoose.model("User", userSchema);
 app.get("/", (req, res) => {
   res.send("Welcome to the application!");
 });
-
 app.post("/getCanvasData", async (req, res) => {
   const { userId } = req.body;
 

@@ -20,7 +20,7 @@ const Login = ({ setLoginUser }) => {
   };
 
   const login = () => {
-    axios.post("https://paint-brown.vercel.app/login", user).then((res) => {
+    axios.post("https://paint-tz9m.onrender.com/login", user).then((res) => {
       alert(res.data.message);
       setLoginUser(res.data.user);
       history("/");
