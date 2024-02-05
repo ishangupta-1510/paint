@@ -21,7 +21,7 @@ const Login = ({ setLoginUser }) => {
     }
 
     const login = () => {
-        axios.post("http://localhost:9002/login", user)
+        axios.post("https://paint-brown.vercel.app/login", user)
             .then(res => {
                 alert(res.data.message)
                 setLoginUser(res.data.user)
