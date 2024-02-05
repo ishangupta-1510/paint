@@ -4,19 +4,24 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 dotenv.config();
 
-mongoose
-  .connect(process.env.Mongodb_Url)
-  .then(() => {
-    console.log("connection is succesfully");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+mongoose.connect(process.env.Mongodb_Url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const connection = mongoose.connection;
+connection.on(
+  "error",
+  console.error.bind(console, "MongoDB connection error:")
+);
+connection.once("open", () => {
+  console.log("Connected to MongoDB");
+});
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -25,9 +30,14 @@ const userSchema = new mongoose.Schema({
   canvasData: { type: String, default: null },
 });
 
-const User = new mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 //Routes
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the application!");
+});
+
 app.post("/getCanvasData", async (req, res) => {
   const { userId } = req.body;
 
